@@ -2,11 +2,8 @@
 
 Desktop version of map browers such as Google Maps
 
-This software was developped as an assignment during the 2019/20 university year at the CERI, Avignon University (France), by the following students:
-* Mohamed BEN YAMNA
-* Quentin Capdepon
+This software was developped as an assignment during the 2019/20 university year at the CERI, Avignon University (France), by the following student:
 * Yanis Labrak
-* Zihao Zheng
 
 It can be used to browse maps extracted from OpenStreetMap.
 

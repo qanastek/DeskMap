@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="859.0" prefWidth="1328.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.univavignon.ceri.deskmap.controllers.MainViewController">
+   <children>
+      <SplitPane fx:id="verticalSplitPane" dividerPositions="0.85" orientation="VERTICAL" prefHeight="585.0" prefWidth="1022.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+            <SplitPane fx:id="splitPane" dividerPositions="0.29" prefHeight="455.0" prefWidth="1022.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="300.0" style="-fx-background-color: #1a247f;">
+                     <children>
+                        <VBox prefHeight="455.0" prefWidth="292.0" style="-fx-pref-height: 100%; -fx-pref-width: 100%;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <HBox minHeight="0.0" minWidth="0.0" prefWidth="214.0" spacing="5.0" style="-fx-pref-width: 100%;" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <ComboBox fx:id="cityName" editable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onKeyReleased="#KeyPressCity" prefHeight="31.0" prefWidth="100.0" promptText="Nom de la ville" style="-fx-background-color: #2d389f; -fx-text-inner-color: #2d389f;" visibleRowCount="15" HBox.hgrow="ALWAYS" />
+                                    <Button fx:id="cityButton" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="223.0" layoutY="17.0" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#setCity" prefHeight="31.0" prefWidth="45.0" style="-fx-background-color: #8799ff;" text="GO" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="223.0" AnchorPane.topAnchor="17.0" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="Roboto Black" size="15.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets left="15.0" right="15.0" top="20.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox minHeight="0.0" minWidth="0.0" prefWidth="214.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <TextField fx:id="fromNumber" disable="true" layoutX="23.0" layoutY="57.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#checkAllComboBox" onKeyTyped="#checkInputFrom" prefHeight="31.0" prefWidth="125.0" promptText="N° Rue Départ" style="-fx-background-color: #2d389f; -fx-text-inner-color: white;" AnchorPane.leftAnchor="23.0" AnchorPane.topAnchor="57.0" HBox.hgrow="ALWAYS">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </TextField>
+                                    <ComboBox fx:id="fromName" disable="true" editable="true" layoutX="155.0" layoutY="57.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#checkAllComboBox" onKeyReleased="#autoCompleteFrom" prefHeight="31.0" prefWidth="113.0" promptText="Rue" style="-fx-background-color: #2d389f; -fx-text-inner-color: #2d389f;" AnchorPane.leftAnchor="155.0" AnchorPane.topAnchor="57.0" HBox.hgrow="ALWAYS" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="15.0" right="15.0" top="10.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox minHeight="0.0" minWidth="0.0" prefWidth="214.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <TextField fx:id="toNumber" disable="true" layoutX="23.0" layoutY="17.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#checkAllComboBox" onKeyTyped="#checkInputTo" prefHeight="31.0" prefWidth="125.0" promptText="N° Rue D'arrivé" style="-fx-background-color: #2d389f; -fx-text-inner-color: white;" AnchorPane.leftAnchor="23.0" AnchorPane.topAnchor="98.0" HBox.hgrow="ALWAYS">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </TextField>
+                                    <ComboBox fx:id="toName" disable="true" editable="true" layoutX="155.0" layoutY="98.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#checkAllComboBox" onKeyReleased="#autoCompleteTo" prefHeight="31.0" prefWidth="113.0" promptText="Rue" style="-fx-background-color: #2d389f; -fx-text-inner-color: #2d389f;" AnchorPane.leftAnchor="155.0" AnchorPane.topAnchor="98.0" HBox.hgrow="ALWAYS" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="15.0" right="15.0" top="10.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox minHeight="0.0" minWidth="0.0" prefWidth="214.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <ComboBox fx:id="calculMode" disable="true" editable="true" layoutX="155.0" layoutY="98.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#calculationMode" onKeyReleased="#autoCompleteTo" prefHeight="0.0" prefWidth="130.0" promptText="Mode calcul" style="-fx-background-color: #2d389f; -fx-text-inner-color: black;" AnchorPane.leftAnchor="155.0" AnchorPane.topAnchor="98.0" HBox.hgrow="ALWAYS" />
+                                    <ComboBox fx:id="transportMode" disable="true" editable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#transportMode" onKeyReleased="#autoCompleteTo" prefHeight="31.0" prefWidth="113.0" promptText="Mode transport" style="-fx-background-color: #2d389f; -fx-text-inner-color: black;" HBox.hgrow="ALWAYS" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="15.0" right="15.0" top="10.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox minHeight="0.0" minWidth="0.0" prefWidth="214.0" spacing="5.0">
+                                 <children>
+                                    <CheckBox fx:id="correspondance" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#correspondance" text="Correspondance" textAlignment="CENTER" textFill="WHITE" HBox.hgrow="ALWAYS" />
+                                    <CheckBox fx:id="sens" disable="true" mnemonicParsing="false" onAction="#sens" text="Sens" textAlignment="CENTER" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                       <HBox.margin>
+                                          <Insets left="50.0" />
+                                       </HBox.margin>
+                                    </CheckBox>
+                                 </children>
+                                 <padding>
+                                    <Insets left="15.0" right="15.0" top="10.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox minHeight="0.0" minWidth="0.0" prefHeight="50.0" prefWidth="214.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <Button fx:id="searchBtn" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="153.0" layoutY="142.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#searching" prefHeight="39.0" prefWidth="140.0" style="-fx-background-color: #8799ff;" text="SEARCH" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="153.0" AnchorPane.topAnchor="142.0" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="Roboto Medium" size="21.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="resetBtn" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="23.0" layoutY="142.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#Reset" prefHeight="39.0" prefWidth="125.0" style="-fx-background-color: #8799ff;" text="STOP" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="23.0" AnchorPane.topAnchor="142.0" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="Roboto Medium" size="21.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                                 <padding>
+                                    <Insets left="15.0" right="15.0" top="10.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox minHeight="0.0" minWidth="0.0" prefWidth="214.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                                 <padding>
+                                    <Insets left="15.0" right="15.0" top="10.0" />
+                                 </padding>
+                                 <children>
+                                    <ComboBox fx:id="lines" editable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onKeyReleased="#autoCompleteTo" prefHeight="36.0" prefWidth="138.0" promptText="Ligne(s) Transport" style="-fx-background-color: #2d389f; -fx-text-inner-color: black;" HBox.hgrow="ALWAYS" />
+                                    <Button fx:id="displayTC" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#display" prefHeight="35.0" prefWidth="113.0" style="-fx-background-color: #8799ff;" text="Afficher" textAlignment="CENTER" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="hideTC" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#hide" prefHeight="35.0" prefWidth="113.0" style="-fx-background-color: #8799ff;" text="Cacher" textAlignment="CENTER" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="140.0" prefWidth="381.0" style="-fx-pref-width: 100%;" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <TextArea fx:id="mapPath" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefWidth="351.0" text="Informations about the path..." HBox.hgrow="ALWAYS" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="15.0" right="15.0" top="10.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox minHeight="0.0" minWidth="0.0" prefWidth="214.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <Button fx:id="exportXML" alignment="CENTER" contentDisplay="CENTER" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#exportXML" prefHeight="35.0" prefWidth="113.0" style="-fx-background-color: #8799ff;" text="Exporter" textAlignment="CENTER" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="importXML" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#importXML" prefHeight="35.0" prefWidth="113.0" style="-fx-background-color: #8799ff;" text="Importer" textAlignment="CENTER" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="15.0" left="15.0" right="15.0" top="10.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="150.0" prefHeight="447.0" prefWidth="716.0" style="-fx-background-color: #f2efe9;">
+                     <children>
+                        <AnchorPane fx:id="canvasPane" layoutX="149.0" layoutY="128.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Canvas fx:id="canvasMap" height="572.0" onMouseMoved="#showNodesArround" onMousePressed="#mouseClick" onMouseReleased="#drop" onScroll="#canvasScrolling" width="937.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <rotationAxis>
+                                    <Point3D />
+                                 </rotationAxis></Canvas>
+                              <Canvas fx:id="canvasNodes" height="572.0" onMouseMoved="#showNodesArround" onMousePressed="#mouseClick" onMouseReleased="#drop" onScroll="#canvasScrolling" width="937.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="16.0" layoutX="14.0" layoutY="409.0" stroke="WHITE" strokeType="INSIDE" width="104.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="14.0" />
+                              <Line endX="50.0" layoutX="21.0" layoutY="411.0" stroke="GREY" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="20.0" />
+                              <Text layoutX="98.0" layoutY="560.0" strokeType="OUTSIDE" strokeWidth="0.0" text="km" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="98.0">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="scaleValue" layoutX="79.0" layoutY="422.26171875" strokeType="OUTSIDE" strokeWidth="0.0" text="0" AnchorPane.bottomAnchor="7.9775390625" AnchorPane.leftAnchor="79.0">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                              </Text>
+                              <ProgressIndicator fx:id="loading" layoutX="14.0" layoutY="637.0" visible="false" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="14.0" />
+                           </children>
+                        </AnchorPane>
+                        <VBox layoutX="676.0" layoutY="288.0" prefHeight="147.0" prefWidth="29.0" AnchorPane.bottomAnchor="18.0" AnchorPane.rightAnchor="15.0">
+                           <children>
+                              <Button layoutX="670.0" layoutY="275.0" mnemonicParsing="false" onAction="#zoomIn" style="-fx-background-color: white;" text="+" textAlignment="CENTER" AnchorPane.bottomAnchor="147.0" AnchorPane.rightAnchor="11.0">
+                                 <font>
+                                    <Font name="Roboto Black" size="15.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Slider fx:id="slider" blockIncrement="1.0" layoutX="689.0" layoutY="306.0" majorTickUnit="32.0" max="5.0" min="1.0" minorTickCount="1" onMouseReleased="#zoomInSlider" orientation="VERTICAL" prefHeight="75.0" prefWidth="17.0" style="-fx-background-color: transparent;" value="1.0" AnchorPane.bottomAnchor="72.0" AnchorPane.rightAnchor="18.0">
+                                 <VBox.margin>
+                                    <Insets left="5.0" />
+                                 </VBox.margin>
+                              </Slider>
+                              <Button layoutX="672.0" layoutY="390.0" mnemonicParsing="false" onAction="#zoomOut" style="-fx-background-color: white;" text="-" textAlignment="CENTER" AnchorPane.bottomAnchor="32.0" AnchorPane.rightAnchor="13.0">
+                                 <font>
+                                    <Font name="Roboto Black" size="15.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <Button layoutX="857.0" layoutY="43.0" mnemonicParsing="false" onAction="#center" style="-fx-background-color: white;" text="O" textFill="#666666" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="43.0">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="893.0" layoutY="42.0" mnemonicParsing="false" onAction="#right" style="-fx-background-color: white;" text="&gt;" textFill="#666666" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="42.0">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="823.0" layoutY="42.0" mnemonicParsing="false" onAction="#left" style="-fx-background-color: white;" text="&lt;" textFill="#666666" AnchorPane.rightAnchor="83.0" AnchorPane.topAnchor="42.0">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="855.0" layoutY="8.0" mnemonicParsing="false" onAction="#up" prefHeight="31.0" prefWidth="37.0" style="-fx-background-color: white;" text="ʌ" textFill="#666666" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="8.0">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="854.0" layoutY="78.0" mnemonicParsing="false" onAction="#down" prefHeight="31.0" prefWidth="37.0" style="-fx-background-color: white;" text="v" textFill="#666666" AnchorPane.rightAnchor="46.0" AnchorPane.topAnchor="78.0">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <VBox layoutX="14.0" layoutY="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+                           <children>
+                              <Button fx:id="hideLeft" layoutX="9.0" layoutY="367.0" mnemonicParsing="false" onAction="#hideLeft" style="-fx-background-color: white;" text="&lt;" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="9.0">
+                                 <font>
+                                    <Font name="Roboto Black" size="15.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="showLeft" layoutX="9.0" layoutY="406.0" mnemonicParsing="false" onAction="#showLeft" style="-fx-background-color: white;" text="&gt;" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="9.0">
+                                 <font>
+                                    <Font name="Roboto Black" size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+            <AnchorPane maxHeight="200.0" minHeight="0.0" style="-fx-background-color: #1a247f;">
+               <children>
+                  <TextArea fx:id="statusBar" editable="false" layoutX="13.0" layoutY="18.0" prefHeight="95.0" prefWidth="995.0" text="No logs..." AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </padding>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

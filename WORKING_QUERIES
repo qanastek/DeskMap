@@ -1,0 +1,37 @@
+// utilisé le serveur production de overpass
+https://lz4.overpass-api.de/api/interpreter?data=[out:csv(::id,::lat,::lon,"name";false;"|")][timeout:25];(area[name="France"];)->.SA;(node["place"~"city|town"](area.SA););out;
+
+// All the cities (and smallest town) for a specefic area like France, Vaucluse, Avignon
+
+[out:json];
+(area[name="France"];)->.SA;
+(
+	node["place"~"city|town"](area.SA);
+);
+out;
+
+// All french cities separated by "|"
+[out:csv(
+    ::id,::lat,::lon,"name";
+    false;
+    "|"
+)];
+(area[name="France"];)->.SA;
+(
+    node["place"="city"](area.SA);
+    node["place"="town"](area.SA);
+);
+out;
+
+// Get all the streets of a specefic area
+
+[out:json];
+(area[name="Avignon"];)->.SA; (
+   node["highway"="primary"](area.SA);
+   node["highway"="secondary"](area.SA);
+   node["highway"="tertiary"](area.SA);
+   node["highway"="residential"](area.SA);
+   node["highway"="unclassified"](area.SA);
+ way["highway"](area.SA);
+);
+out;

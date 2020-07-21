@@ -1,0 +1,158 @@
+// Tuto pareil que nous
+https://mapsaregreat.com/geographic-data-mining-and-visualisation-for-beginners/overpass-turbo-tutorial.html
+
+// BBOX
+http://lxbarth.com/bbox/#4.7725296,43.929643,4.8454857,43.963014,13,43.944106310104196,4.808921813964836
+
+/*
+* Récupération des couleurs d'arrière plan
+*/
+
+https://wiki.openstreetmap.org/wiki/FR:Key:landuse
+https://wiki.openstreetmap.org/wiki/Proposed_features/landcover
+
+
+landcover water
+landcover trees
+
+landuse residential (résidentielle)
+landuse industrial (industrielle)
+landuse commercial (bureaux)
+landuse retail (magasin)
+landuse railway (chemin férovière)
+landuse cemetery (cimetière)
+landuse forest (forêt)
+
+
+[out:json];
+(area[name="Avignon"];)->.SA;
+(
+   node["landuse"~"residential|industrial|commercial|retail|railway|cemetery"](area.SA);
+   way["landuse"~"residential|industrial|commercial|retail|railway|cemetery"](area.SA);
+   relation["landuse"](area.SA);
+);
+out body;
+>;
+out skel qt;
+
+
+
+
+/*
+* Parking / ect ...
+*/
+amenity parking
+amenity school
+
+leisure sports_centre (centre sportif)
+leisure park
+leisure golf_course
+
+
+
+/*
+* Batiment
+*/
+
+building apartments
+building bungalow (Bungalow, pavillon. Petit bâtiment isolé de plain pied.)
+building detached
+building dormitory
+building hotel
+building house
+building residential
+building commercial
+building industrial
+building office
+building retail
+building supermarket
+building warehouse
+building hospital
+building civic
+building government
+building public
+building school
+building train_station
+building university
+building stadium
+building parking
+
+
+/*
+* Natural
+*/
+
+natural water
+
+/*
+* Routes
+*/
+
+highway primary
+highway secondary
+highway trunk
+highway residential
+highway living_street
+highway pedestrian
+highway service
+highway motorway
+
+
+/*
+* Requête générale de loin
+*/
+
+[out:json];
+(
+   way["landuse"="residential"](48.8,2.3,48.9,2.4);
+   way["landuse"="industrial"](48.8,2.3,48.9,2.4);
+   way["landuse"="commercial"](48.8,2.3,48.9,2.4);
+   way["landuse"="retail"](48.8,2.3,48.9,2.4);
+   way["landuse"="railway"](48.8,2.3,48.9,2.4);
+   way["landuse"="cemetery"](48.8,2.3,48.9,2.4);
+   way["landuse"="forest"](48.8,2.3,48.9,2.4);
+   way["landuse"="grass"](48.8,2.3,48.9,2.4);
+   relation["landuse"](48.8,2.3,48.9,2.4);
+
+   way["amenity"="school"](48.8,2.3,48.9,2.4);
+   relation["amenity"](48.8,2.3,48.9,2.4);
+
+   way["leisure"="sports_centre"](48.8,2.3,48.9,2.4);
+   way["leisure"="park"](48.8,2.3,48.9,2.4);
+   way["leisure"="golf_course"](48.8,2.3,48.9,2.4);
+   relation["leisure"](48.8,2.3,48.9,2.4);
+
+
+   natural water
+
+   way["highway"="primary"](48.8,2.3,48.9,2.4);
+   way["highway"="secondary"](48.8,2.3,48.9,2.4);
+   way["highway"="trunk"](48.8,2.3,48.9,2.4);
+   way["highway"="residential"](48.8,2.3,48.9,2.4);
+   way["highway"="living_street"](48.8,2.3,48.9,2.4);
+   way["highway"="pedestrian"](48.8,2.3,48.9,2.4);
+   way["highway"="motorway"](48.8,2.3,48.9,2.4);
+   way["highway"="unclassified"](48.8,2.3,48.9,2.4);
+   relation["highway"](48.8,2.3,48.9,2.4);
+
+   way["waterway"="riverbank"](48.8,2.3,48.9,2.4);
+   relation["waterway"](48.8,2.3,48.9,2.4);
+
+   way["building"="yes"](48.8,2.3,48.9,2.4);
+   relation["building"](48.8,2.3,48.9,2.4);
+);
+out body;
+>;
+out skel qt;
+
+/*
+* Calcule de la BBox
+*/
+
+// lat, lon
+avignon = (43,9492493, 4,8059012)
+
+left_lat = lat - 0.5
+left_lon = lon - 0.5
+right_lat = lat + 0.5
+right_lon = lon + 0.5

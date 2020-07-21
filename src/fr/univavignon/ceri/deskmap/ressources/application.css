@@ -1,0 +1,43 @@
+.context-menu-label:disabled {
+    -fx-opacity: 1.0;
+}
+
+.context-menu-label:disabled .label {
+    -fx-opacity: 1.0;
+}
+
+.context-menu-label:disabled:hover {
+    -fx-background-color: white;
+}
+
+.context-menu-label:disabled:hover .label {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}
+
+.context-menu-label:disabled:pressed {
+    -fx-background-color: white;
+}
+
+.context-menu-label:disabled:pressed .label {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}
+
+.context-menu-label:disabled:focused {
+    -fx-background-color: white;
+}
+
+.context-menu-label:disabled:focused .label {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}
+
+.context-menu-label:focused {
+    -fx-background-color: white;
+}
+
+.context-menu-label:focused .label {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}

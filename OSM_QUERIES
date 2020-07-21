@@ -1,0 +1,78 @@
+// Testé sur http://overpass-turbo.eu/
+
+// Liens utiles:
+https://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL#By_area_.28area.29
+
+
+// Exemple 1
+
+[out:csv(::id, ::type, "name")];
+area[name="Bonn"];
+node(area)[railway=station];
+out;
+
+// Toutes les villes de france
+/*
+City ne suffit pas il faut aussi mettre: town
+*/
+
+// Récupéré pour ses villes les infos suivantes
+
+[out:csv(
+  	"name",
+  	::id,
+	::lat,
+  	::lon
+)];
+area[name="France"];
+(
+  node[place~"city|town"](area);
+);
+out;
+
+// Les rues d'une ville
+// Conception de la bbox avec http://tools.geofabrik.de/calc/#type=geofabrik_standard&bbox=4.768103,43.91879,4.847603,43.968752&tab=1&proj=EPSG:4326&places=2
+
+[out:json][timeout:25];
+(
+ way["addr:city"~"Avignon"](43.98,4.70,44.19,4.96);
+);
+out meta asc;
+>;
+out meta qt;
+
+// Récupère les musée d'une ville
+
+[out:json][timeout:25];
+{{geocodeArea:Avignon}}->.SA; (
+ node["tourism"="museum"](area.SA);
+ way["tourism"="museum"](area.SA);
+);
+out body;
+>;
+out skel qt;
+
+// Récupère toutes les voies d'avignon
+// https://wiki.openstreetmap.org/wiki/Key:highway
+
+[out:json][timeout:50];
+{{geocodeArea:Avignon}}->.SA; (
+   node["highway"="primary"](area.SA);
+   node["highway"="secondary"](area.SA);
+   node["highway"="tertiary"](area.SA);
+   node["highway"="residential"](area.SA);
+   node["highway"="unclassified"](area.SA);
+ way["highway"](area.SA);
+);
+out;
+
+[out:json][timeout:50];
+area(3600102478)->.SA; (
+   node["highway"="primary"](area.SA);
+   node["highway"="secondary"](area.SA);
+   node["highway"="tertiary"](area.SA);
+   node["highway"="residential"](area.SA);
+   node["highway"="unclassified"](area.SA);
+ way["highway"](area.SA);
+);
+out;

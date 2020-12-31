@@ -1,6 +1,6 @@
 # DeskMap
 
-Desktop version of map browers such as Google Maps
+Desktop version of map browser such as Google Maps
 
 This software was developped as an assignment during the 2019/20 university year at the CERI, Avignon University (France), by the following student:
 * Yanis Labrak
